@@ -41,6 +41,7 @@
  */
 
 int		check_file(char *name);
+int		save_tetramino(char * str);
 
 typedef struct  s_shape
 {
