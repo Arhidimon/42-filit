@@ -77,6 +77,7 @@ int		check_file(char *name)
 			return (2);
 		}
 		last_line = num;
+		save_tetramino(buff);
 	}
 	if (num_tetramino == 0 || num_tetramino > 26 || last_line != 20)
 		return (3);
