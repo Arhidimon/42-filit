@@ -67,10 +67,7 @@ int		check_file(char *name)
 	int		last_line;
 
 	if (!(fd = open(name, O_RDONLY)))
-	{
-		close(fd);
 		return (-1);
-	}
 	num_tetramino = 0;
 	while ((num = read(fd, buff, 21)))
 	{
