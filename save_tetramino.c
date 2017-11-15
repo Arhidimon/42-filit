@@ -16,47 +16,79 @@
 #include <stdio.h>
 #include "fillit.h"
 
-char		*cut_tetramino(char *str, t_shape *list)
+void	cut_tetramino_horisontal(char *str, t_shape *shape)
 {
-	int 	height;
-	int 	row_len;
-	int 	row;
-	int 	column;
-	int 	col_height;
+	int		col;
+	int		row;
+	int		sharp;
+	int		len;
 
-	column = -1;
-	row_len = 0;
-	height = 0;
-	while (++column <= 3)
-	{
-		row = -1;
-		col_height = 0;
-		while (++row <= 3)
-		{
-			if (str[column + row * 5] == '#')
-			{
-				col_height++;
-				row_len++;
-				break;
-			}
-			height = (col_height > height) ? col_height : height;
-		}
-
-	}
-	list->cols = row_len;
-	list->rows = height;
+	len = 0;
 	row = -1;
-	row_len = 0;
-
-
-	printf("row_len: %i\n\n", row_len);
-	return (NULL);
+	while (++row <= 3)
+	{
+		col = -1;
+		sharp = 0;
+		while (++col <= 3)
+			if (str[row * 5 + col] == '#')
+				sharp++;
+		len = (sharp > 0) ? ++len : len;
+		if (sharp == 0)
+			while (--col >= 0)
+				str[row * 5 + col] = '*';
+	}
+	shape->rows = len;
 }
 
-int		save_tetramino(char *str)
+void	cut_tetramino_vertical(char *str, t_shape *shape)
 {
-	//int 	row_len;
+	int		col;
+	int		row;
+	int		sharp;
+	int		len;
 
-	cut_tetramino(str);
-	return (1);
+	len = 0;
+	col = -1;
+	while (++col <= 3)
+	{
+		row = -1;
+		sharp = 0;
+		while (++row <= 3)
+			if (str[col + row * 5] == '#')
+				sharp++;
+		len = (sharp > 0) ? ++len : len;
+		if (sharp == 0)
+			while (--row >= 0)
+				str[col + row * 5] = '*';
+	}
+	shape->cols = len;
+}
+
+t_shape	*save_tetramino(char *str)
+{
+	t_shape *shape;
+	int		len;
+	int		i;
+
+	if (!(shape = (t_shape *)malloc(sizeof(t_shape))))
+		return (NULL);
+	cut_tetramino_vertical(str, shape);
+	cut_tetramino_horisontal(str, shape);
+	len = 0;
+	i = -1;
+	while (++i < 20)
+		if (str[i] == '#' || str[i] == '.')
+			len++;
+	if (!(shape->map = (char *)malloc(sizeof(char) * (len + 1))))
+	{
+		free(shape);
+		return (NULL);
+	}
+	*(shape->map + len) = '\0';
+	while (--i >= 0)
+		if (str[i] == '#')
+			*(shape->map + --len) = '1';
+		else if (str[i] == '.')
+			*(shape->map + --len) = '0';
+	return (shape);
 }

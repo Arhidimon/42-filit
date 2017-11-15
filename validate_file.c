@@ -12,6 +12,7 @@
 
 #include <fcntl.h>
 #include <unistd.h>
+#include "fillit.h"
 
 int		num_of_connections(char *str, int i)
 {
@@ -58,12 +59,11 @@ int		valid_map(char *str, int size, int *tetramino)
 	return (0);
 }
 
-int		validate_file(char *name)
+int		validate_file(char *name, int *num_tetramino)
 {
 	int		fd;
 	char	buff[21];
 	int		num;
-	int		num_tetramino;
 	int		last_line;
 
 	if (!(fd = open(name, O_RDONLY)))
@@ -71,7 +71,7 @@ int		validate_file(char *name)
 	num_tetramino = 0;
 	while ((num = read(fd, buff, 21)))
 	{
-		if (valid_map(buff, num, &num_tetramino) != 0)
+		if (valid_map(buff, num, num_tetramino) != 0)
 		{
 			close(fd);
 			return (2);
@@ -79,7 +79,7 @@ int		validate_file(char *name)
 		last_line = num;
 		save_tetramino(buff);
 	}
-	if (num_tetramino == 0 || num_tetramino > 26 || last_line != 20)
+	if (*num_tetramino == 0 || *num_tetramino > 26 || last_line != 20)
 		return (3);
 	close(fd);
 	return (0);

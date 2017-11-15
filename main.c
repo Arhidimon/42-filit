@@ -18,6 +18,7 @@ int     main(int argc, char **argv)
 {
     t_shape tetraminos[26];
 	t_point positions[26];
+	int 	num_tetramino;
 
 	positions[0].x = 0;
 	positions[0].y = 0;
@@ -31,6 +32,6 @@ int     main(int argc, char **argv)
         ft_putstr("usage: fillit source_file\n");
         return (0);
     }
-    printf("res:%i\n", validate_file(argv[1]));
+    printf("res:%i\n", validate_file(argv[1], &num_tetramino));
     return (0);
 }
