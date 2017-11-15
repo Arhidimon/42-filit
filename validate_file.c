@@ -58,7 +58,7 @@ int		valid_map(char *str, int size, int *tetramino)
 	return (0);
 }
 
-int		check_file(char *name)
+int		validate_file(char *name)
 {
 	int		fd;
 	char	buff[21];

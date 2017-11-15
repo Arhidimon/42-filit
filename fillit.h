@@ -40,7 +40,7 @@
  * 								3 2  011110
  */
 
-int		check_file(char *name);
+int		validate_file(char *name);
 int		save_tetramino(char * str);
 
 typedef struct  s_shape

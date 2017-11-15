@@ -31,6 +31,6 @@ int     main(int argc, char **argv)
         ft_putstr("usage: fillit source_file\n");
         return (0);
     }
-    printf("res:%i\n", check_file(argv[1]));
+    printf("res:%i\n", validate_file(argv[1]));
     return (0);
 }
