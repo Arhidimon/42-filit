@@ -40,20 +40,21 @@
  * 								3 2  011110
  */
 
-int		validate_file(char *name);
-int		save_tetramino(char * str);
 
-typedef struct  s_shape
+typedef struct	s_shape
 {
-    char    rows;
-    char    cols;
-    char    *map;
-}               t_shape;
+	char		rows;
+	char		cols;
+	char		*map;
+}				t_shape;
 
-typedef struct  s_point
+typedef struct	s_point
 {
-	char    x;
-	char    y;
-}               t_point;
+	char		x;
+	char		y;
+}				t_point;
+
+int				validate_file(char *name);
+t_shape			*save_tetramino(char * str);
 
 #endif
