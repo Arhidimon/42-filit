@@ -56,5 +56,6 @@ typedef struct	s_point
 
 int				validate_file(char *name, int *num_tetramino);
 t_shape			*save_tetramino(char * str);
+int 			ft_map_size(int num_tetramino);
 
 #endif
