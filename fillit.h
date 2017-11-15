@@ -50,4 +50,10 @@ typedef struct  s_shape
     char    *map;
 }               t_shape;
 
+typedef struct  s_point
+{
+	char    x;
+	char    y;
+}               t_point;
+
 #endif

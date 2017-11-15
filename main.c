@@ -16,6 +16,16 @@
 
 int     main(int argc, char **argv)
 {
+    t_shape tetraminos[26];
+	t_point positions[26];
+
+	positions[0].x = 0;
+	positions[0].y = 0;
+    tetraminos[0].rows = 2;
+    tetraminos[0].cols = 3;
+    tetraminos[0].map = "010111";
+
+
     if (argc != 2)
     {
         ft_putstr("usage: fillit source_file\n");
