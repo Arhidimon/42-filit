@@ -54,7 +54,7 @@ typedef struct	s_point
 	char		y;
 }				t_point;
 
-int				validate_file(char *name);
+int				validate_file(char *name, int *num_tetramino);
 t_shape			*save_tetramino(char * str);
 
 #endif
