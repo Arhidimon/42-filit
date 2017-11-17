@@ -33,8 +33,5 @@ clean:
 	rm -f $(OFILES)
 fclean: clean
 	rm -f $(NAME)
-<<<<<<< HEAD
-re: fclean
-=======
 re: fclean all
->>>>>>> fcbba40177d6cd0b4ed842a8137e275e60ac949c
+
