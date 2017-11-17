@@ -13,6 +13,9 @@
 #ifndef FILLIT_H
 # define FILLIT_H
 
+
+# define ABS(Value) Value>0?Value:-Value
+
 /* I straight   polyomino		1 4  1111
  *								4 1  1111
  *

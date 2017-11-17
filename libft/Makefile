@@ -33,6 +33,4 @@ clean:
 	rm -f $(OFILES)
 fclean: clean
 	rm -f $(NAME)
-re:
-    make fclean
-    make
+re: fclean
