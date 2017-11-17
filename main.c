@@ -19,6 +19,7 @@ int     main(int argc, char **argv)
     t_shape tetraminos[26];
 	t_point positions[26];
 	int 	num_tetramino;
+	int 	map_size;
 
 	positions[0].x = 0;
 	positions[0].y = 0;
@@ -33,5 +34,6 @@ int     main(int argc, char **argv)
         return (0);
     }
     printf("res:%i\n", validate_file(argv[1], &num_tetramino));
+	map_size = ft_map_size(num_tetramino);
     return (0);
 }
