@@ -53,7 +53,7 @@ int		valid_map(char *str, int size, int *tetramino)
 		}
 		i++;
 	}
-	if ((sharp != 4 && sharp != 0) || (connections < 6 && connections != 0))
+	if (sharp != 4 || connections < 6)
 		return (3);
 	*tetramino = (connections > 0) ? ++(*tetramino) : *tetramino;
 	return (0);
