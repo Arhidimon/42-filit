@@ -16,10 +16,10 @@
 
 int     main(int argc, char **argv)
 {
-    t_shape tetraminos[26];
-	t_point positions[26];
-	int 	num_tetramino;
-	int 	map_size;
+    t_shape 	*tetraminos[26];
+	t_point		positions[26];
+	int 		num_tetramino;
+	int 		map_size;
 
     tetraminos[0].rows = 2;
     tetraminos[0].cols = 2;
@@ -44,11 +44,19 @@ int     main(int argc, char **argv)
         return (0);
     }*/
     //printf("res:%i\n", validate_file(argv[1], &num_tetramino, tetraminos));
+
+	if (!(validate_file(argv[1], &num_tetramino, tetraminos)))
+	{
+		//free all
+		return (0);
+	}
 	num_tetramino = 5;
     map_size = ft_map_size(num_tetramino);
     printf("Number of tetromisnos:%i\nMap size:%i\n",num_tetramino, map_size);
 	get_solution(tetraminos, positions, num_tetramino, map_size);
 	printf("x1 %i y1 %i x2 %i y2 %icoll %i\n",positions[0].x,positions[0].y,positions[2].x,positions[2].y, check_collission(tetraminos[0],tetraminos[2],positions[0],positions[2]));
+
 	//printout(tetraminos, positions, 2, 8);
-    return (0);
+    //free all
+	return (0);
 }

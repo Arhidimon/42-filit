@@ -59,7 +59,7 @@ int		valid_map(char *str, int size, int *tetramino)
 	return (0);
 }
 
-int		validate_file(char *name, int *num_tetramino, t_shape *shapes)
+int		validate_file(char *name, int *num_tetramino, t_shape **shapes)
 {
 	int		fd;
 	char	buff[21];
@@ -85,7 +85,7 @@ int		validate_file(char *name, int *num_tetramino, t_shape *shapes)
 		/*
 		 * add work with list of shapes
 		 */
-		shapes[i++] = *save_tetramino(buff);
+		shapes[i++] = save_tetramino(buff);
 	}
 	if (*num_tetramino == 0 || *num_tetramino > 26 || last_line != 20)
 		return (3);
