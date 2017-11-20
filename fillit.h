@@ -57,11 +57,12 @@ typedef struct	s_point
 	char		y;
 }				t_point;
 
-int				validate_file(char *name, int *num_tetramino, t_shape *shapes);
+int				validate_file(char *name, int *num_tetramino, t_shape **shapes);
 t_shape			*save_tetramino(char * str);
 int 			ft_map_size(int num_tetramino);
 char	check_collission(t_shape a, t_shape b, t_point pos_a, t_point pos_b);
 
 void 	printout(t_shape *shapes, t_point *positions, int count, int size);
-void 	get_solution(t_shape *shapes, t_point *positions, int count, int side);
+int 	get_solution(t_shape *shapes, t_point *positions, int count, int side);
+char	check_collissions(t_shape *shapes, t_point *positions, int side, int n);
 #endif
