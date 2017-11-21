@@ -38,7 +38,6 @@ int		valid_map(char *str, int size, int *tetramino)
 	int		sharp;
 	int		connections;
 
-	//ft_putstr("valid map\n");
 	if ((size == 21 && str[20] != '\n') || (size == 20 && str[19] != '\n'))
 		return (1);
 	i = 0;
@@ -56,11 +55,9 @@ int		valid_map(char *str, int size, int *tetramino)
 		}
 		i++;
 	}
-
 	if (sharp != 4 || connections < 6)
 		return (3);
-	 *tetramino += 1;
-	//ft_putstr("end valid map\n");
+	*tetramino += 1;
 	return (0);
 }
 
@@ -70,26 +67,18 @@ int		validate_file(char *name, int *num_tetramino, t_shape *shapes)
 	char	buff[21];
 	int		num;
 	int		last_line;
-	int		i;
 
-
-	if (!(fd = open(name, O_RDONLY)))
+	if ((fd = open(name, O_RDONLY)) < 0)
 		return (-1);
-	i = 0;
 	while ((num = read(fd, buff, 21)))
 	{
 		if (valid_map(buff, num, num_tetramino) != 0)
-		{
-			close(fd);
 			return (2);
-		}
 		last_line = num;
-		//ft_putstr("ok\n");
-		save_tetramino(buff, shapes, *num_tetramino - 1);
-
+		if (!(save_tetramino(buff, shapes, *num_tetramino - 1)))
+			return (3);
 	}
 	if (*num_tetramino == 0 || *num_tetramino > 26 || last_line != 20)
-		return (3);
-	close(fd);
+		return (4);
 	return (0);
 }

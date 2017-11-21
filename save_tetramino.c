@@ -69,10 +69,8 @@ int		save_tetramino(char *str, t_shape *shapes, int pos)
 	int		len;
 	int		i;
 
-
 	cut_tetramino_vertical(str, &(shapes[pos]));
 	cut_tetramino_horisontal(str, &(shapes[pos]));
-	//printf("save_tet: \nstr: \n%s\n\npos: %i\n\n", str, pos);
 	len = 0;
 	i = -1;
 	while (++i < 20)
