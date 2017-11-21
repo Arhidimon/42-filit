@@ -64,31 +64,27 @@ void	cut_tetramino_vertical(char *str, t_shape *shape)
 	shape->cols = len;
 }
 
-t_shape	*save_tetramino(char *str)
+int		save_tetramino(char *str, t_shape *shapes, int pos)
 {
-	t_shape *shape;
 	int		len;
 	int		i;
 
-	if (!(shape = (t_shape *)malloc(sizeof(t_shape))))
-		return (NULL);
-	cut_tetramino_vertical(str, shape);
-	cut_tetramino_horisontal(str, shape);
+
+	cut_tetramino_vertical(str, &(shapes[pos]));
+	cut_tetramino_horisontal(str, &(shapes[pos]));
+	//printf("save_tet: \nstr: \n%s\n\npos: %i\n\n", str, pos);
 	len = 0;
 	i = -1;
 	while (++i < 20)
 		if (str[i] == '#' || str[i] == '.')
 			len++;
-	if (!(shape->map = (char *)malloc(sizeof(char) * (len + 1))))
-	{
-		free(shape);
-		return (NULL);
-	}
-	*(shape->map + len) = '\0';
+	if (!(shapes[pos].map = (char *)malloc(sizeof(char) * (len + 1))))
+		return (1);
+	*(shapes[pos].map + len) = '\0';
 	while (--i >= 0)
 		if (str[i] == '#')
-			*(shape->map + --len) = '1';
+			(shapes[pos].map[--len]) = '1';
 		else if (str[i] == '.')
-			*(shape->map + --len) = '0';
-	return (shape);
+			(shapes[pos].map[--len]) = '0';
+	return (0);
 }

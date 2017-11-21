@@ -21,7 +21,8 @@ int     main(int argc, char **argv)
 	int 	num_tetramino;
 	int 	map_size;
 
-    tetraminos[0].rows = 2;
+	num_tetramino = 0;
+   /* tetraminos[0].rows = 2;
     tetraminos[0].cols = 2;
     tetraminos[0].map = "1111";
 	tetraminos[1].rows = 2;
@@ -46,20 +47,22 @@ int     main(int argc, char **argv)
 	positions[3].x = 2;
 	positions[3].y = 2;
 	positions[4].x = 2;
-	positions[4].y = 3;
+	positions[4].y = 3;*/
 
-	printf("Collisions:%i\n",check_collissions(tetraminos, positions, 7, 4));
+	//printf("Collisions:%i\n",check_collissions(tetraminos, positions, 7, 4));
 /*    if (argc != 2)
     {
         ft_putstr("usage: fillit source_file\n");
         return (0);
     }*/
-    printf("res:%i\n", validate_file(argv[1], &num_tetramino, tetraminos));
-	num_tetramino = 5;
+    printf("res:%i\n", validate_file(argv[1], &num_tetramino, &tetraminos[0]));
+	/*num_tetramino = 5;
     map_size = ft_map_size(num_tetramino);
     printf("Number of tetromisnos:%i\nMap size:%i\n",num_tetramino, map_size);
 	get_solution(tetraminos, positions, num_tetramino, map_size);
 	printf("1 (%i,%i)  3(%i,%i) coll %i\n",positions[0].x,positions[0].y,positions[4].x,positions[4].y, check_collission(tetraminos[0],tetraminos[4],positions[0],positions[4]));
 	//printout(tetraminos, positions, 5, 8);
-    return (0);
+    */
+	printf("str: %s\ncols: %i,\n rows: %i\n", tetraminos[1].map, tetraminos[1].cols, tetraminos[1].rows);
+	return (0);
 }

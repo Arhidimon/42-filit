@@ -13,6 +13,8 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include "fillit.h"
+#include <stdio.h>
+#include "libft/libft.h"
 
 int		num_of_connections(char *str, int i)
 {
@@ -36,6 +38,7 @@ int		valid_map(char *str, int size, int *tetramino)
 	int		sharp;
 	int		connections;
 
+	//ft_putstr("valid map\n");
 	if ((size == 21 && str[20] != '\n') || (size == 20 && str[19] != '\n'))
 		return (1);
 	i = 0;
@@ -53,13 +56,15 @@ int		valid_map(char *str, int size, int *tetramino)
 		}
 		i++;
 	}
+
 	if (sharp != 4 || connections < 6)
 		return (3);
-	*tetramino = (connections > 0) ? ++(*tetramino) : *tetramino;
+	 *tetramino += 1;
+	//ft_putstr("end valid map\n");
 	return (0);
 }
 
-int		validate_file(char *name, int *num_tetramino, t_shape **shapes)
+int		validate_file(char *name, int *num_tetramino, t_shape *shapes)
 {
 	int		fd;
 	char	buff[21];
@@ -70,7 +75,6 @@ int		validate_file(char *name, int *num_tetramino, t_shape **shapes)
 
 	if (!(fd = open(name, O_RDONLY)))
 		return (-1);
-	num_tetramino = 0;
 	i = 0;
 	while ((num = read(fd, buff, 21)))
 	{
@@ -80,12 +84,9 @@ int		validate_file(char *name, int *num_tetramino, t_shape **shapes)
 			return (2);
 		}
 		last_line = num;
+		//ft_putstr("ok\n");
+		save_tetramino(buff, shapes, *num_tetramino - 1);
 
-
-		/*
-		 * add work with list of shapes
-		 */
-		shapes[i++] = save_tetramino(buff);
 	}
 	if (*num_tetramino == 0 || *num_tetramino > 26 || last_line != 20)
 		return (3);

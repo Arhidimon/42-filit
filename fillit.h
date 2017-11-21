@@ -58,7 +58,7 @@ typedef struct	s_point
 }				t_point;
 
 int				validate_file(char *name, int *num_tetramino, t_shape *shapes);
-t_shape			*save_tetramino(char * str);
+int				save_tetramino(char * str, t_shape *shapes, int position);
 int 			ft_map_size(int num_tetramino);
 char	check_collission(t_shape a, t_shape b, t_point pos_a, t_point pos_b);
 
