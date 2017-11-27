@@ -13,8 +13,6 @@
 #include <fcntl.h>
 #include <unistd.h>
 #include "fillit.h"
-#include <stdio.h>
-#include "libft/libft.h"
 
 int		num_of_connections(char *str, int i)
 {
@@ -75,7 +73,7 @@ int		validate_file(char *name, int *num_tetramino, t_shape *shapes)
 		if (valid_map(buff, num, num_tetramino) != 0)
 			return (2);
 		last_line = num;
-		if (!(save_tetramino(buff, shapes, *num_tetramino - 1)))
+		if ((save_tetramino(buff, shapes, *num_tetramino - 1)))
 			return (3);
 	}
 	if (*num_tetramino == 0 || *num_tetramino > 26 || last_line != 20)

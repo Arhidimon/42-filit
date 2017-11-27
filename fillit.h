@@ -13,37 +13,6 @@
 #ifndef FILLIT_H
 # define FILLIT_H
 
-
-# define ABS(Value) (Value) > 0 ? (Value) : (-Value)
-
-/* I straight   polyomino		1 4  1111
- *								4 1  1111
- *
- * O    square  polyomino		2 2  1111
- *
- * T			T-polyomino		2 3  111010
- * 								2 3  010111
- * 								3 2  101110
- * 								3 2  011101
- *
- * J							3 2  111010
- * 								3 2  010111
- * 								2 3  100111
- * 								2 3  111100
- *
- * L							2 3  001111
- * 								2 3  111100
- * 								3 2  101011
- * 								3 2  110101
- *
- * S							2 3  011110
- * 								3 2  101101
- *
- * Z							2 3  110011
- * 								3 2  011110
- */
-
-
 typedef struct	s_shape
 {
 	char		rows;
@@ -53,16 +22,21 @@ typedef struct	s_shape
 
 typedef struct	s_point
 {
-	char		x;
-	char		y;
+	int			x;
+	int			y;
 }				t_point;
 
-int				validate_file(char *name, int *num_tetramino, t_shape *shapes);
-int				save_tetramino(char * str, t_shape *shapes, int position);
-int 			ft_map_size(int num_tetramino);
-char	check_collission(t_shape a, t_shape b, t_point pos_a, t_point pos_b);
-
-void 	printout(t_shape *shapes, t_point *positions, int count, int size);
-void 	get_solution(t_shape *shapes, t_point *positions, int count, int side);
-char	check_collissions(t_shape *shapes, t_point *positions, int side, int n);
+int				validate_file(char *name, int *num_tetramino,
+								t_shape *shapes);
+int				save_tetramino(char *str, t_shape *shapes, int position);
+int				ft_map_size(int num_tetramino);
+char			check_collission(t_shape a, t_shape b, t_point pos_a,
+								t_point pos_b);
+int				printout(t_shape *shapes, t_point *positions,
+						int count, int size);
+int				get_solution(t_shape *shapes, t_point *positions,
+							int count, int side);
+char			check_collissions(t_shape *shapes, t_point *positions,
+								int side, int n);
+void			ft_putstr(char const *s);
 #endif

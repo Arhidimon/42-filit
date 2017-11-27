@@ -10,10 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-#include "libft/libft.h"
 #include <stdlib.h>
-#include <stdio.h>
 #include "fillit.h"
 
 void	cut_tetramino_horisontal(char *str, t_shape *shape)

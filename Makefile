@@ -1,14 +1,20 @@
 NAME = fillit
 FLAGS = -Wall -Werror -Wextra
-CFILES = main.c validate_file.c ft_map_size.c save_tetramino.c get_solution.c printout.c
-HFILES = fillit.h
-LIB = /libft/
+OFILES = main.o validate_file.o ft_map_size.o save_tetramino.o get_solution.o printout.o ft_putstr.o
+INCLUDES = fillit.h
+
+.PHONY: all clean fclean re
 
 all: $(NAME)
-$(NAME): $(CFILES)
-	gcc ${FLAGS} ${CFILES} -L.${LIB} -lft -o ${NAME}
+
+$(NAME): $(OFILES)
+	gcc ${FLAGS} ${OFILES} -o ${NAME}
+%.o : %.c
+	$(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@ -I$(INCLUDES)
 clean:
 	rm -f $(OFILES)
 fclean: clean
 	rm -f $(NAME)
-re: fclean all
+re: 
+	make fclean
+	make all
