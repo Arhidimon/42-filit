@@ -38,5 +38,4 @@ int				get_solution(t_shape *shapes, t_point *positions,
 							int count, int side);
 char			check_collissions(t_shape *shapes, t_point *positions,
 								int side, int n);
-void			ft_putstr(char const *s);
 #endif

@@ -1,6 +1,7 @@
+CC = gcc
 NAME = fillit
 FLAGS = -Wall -Werror -Wextra
-OFILES = main.o validate_file.o ft_map_size.o save_tetramino.o get_solution.o printout.o ft_putstr.o
+OFILES = main.o validate_file.o ft_map_size.o save_tetramino.o get_solution.o printout.o
 INCLUDES = fillit.h
 
 .PHONY: all clean fclean re
